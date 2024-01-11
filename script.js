@@ -22,8 +22,13 @@ rollBtn.addEventListener('click', function () {
   const dice = Math.trunc(Math.random() * 6) + 1;
   diceEl.classList.remove('hidden');
   diceEl.src = `dice-${dice}.png`;
-
+  let totalScore = 0;
+  let currentScore = 0;
   if (dice !== 1) {
+    currentScore0El.textContent = dice;
+    currentScore = currentScore + dice;
+    currentScore0El = currentScore;
   } else {
+    currentScore0El.textContent = 0;
   }
 });
