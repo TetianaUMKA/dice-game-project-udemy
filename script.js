@@ -21,6 +21,14 @@ diceEl.classList.add('hidden');
 let currentScore = 0;
 let totalScore = 0;
 
+const showCurrent = function () {
+  currentScore0El.textContent = currentScore;
+};
+
+const showTotal = function () {
+  totalScore0El.textContent = totalScore;
+};
+
 rollBtn.addEventListener('click', function () {
   const dice = Math.trunc(Math.random() * 6) + 1;
   diceEl.classList.remove('hidden');
@@ -28,18 +36,23 @@ rollBtn.addEventListener('click', function () {
 
   if (dice !== 1) {
     currentScore += dice;
-    currentScore0El.textContent = currentScore;
+    showCurrent();
   } else {
     currentScore = 0;
-    currentScore0El.textContent = currentScore;
-    totalScore = 0;
-    totalScore0El.textContent = totalScore;
+    showCurrent();
   }
 });
 
 holdBtn.addEventListener('click', function () {
   totalScore += currentScore;
-  totalScore0El.textContent = totalScore;
+  showTotal();
   currentScore = 0;
-  currentScore0El.textContent = currentScore;
+  showCurrent();
+});
+
+newGameBtn.addEventListener('click', function () {
+  currentScore = 0;
+  totalScore = 0;
+  showCurrent();
+  showTotal();
 });
