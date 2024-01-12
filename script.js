@@ -19,6 +19,7 @@ totalScore1El.textContent = 0;
 const totalScores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+let playing = true;
 
 const showCurrent = function () {
   document.getElementById(`current--${activePlayer}`).textContent =
@@ -43,39 +44,48 @@ const switchPlayer = function () {
 };
 
 rollBtn.addEventListener('click', function () {
-  const dice = Math.trunc(Math.random() * 6) + 1;
-  diceEl.classList.remove('hidden');
-  diceEl.src = `dice-${dice}.png`;
+  if (playing) {
+    const dice = Math.trunc(Math.random() * 6) + 1;
+    diceEl.classList.remove('hidden');
+    diceEl.src = `dice-${dice}.png`;
 
-  if (dice !== 1) {
-    currentScore += dice;
-    showCurrent();
-  } else {
-    switchPlayer();
+    if (dice !== 1) {
+      currentScore += dice;
+      showCurrent();
+    } else {
+      switchPlayer();
+    }
   }
 });
 
 holdBtn.addEventListener('click', function () {
-  totalScores[activePlayer] += currentScore;
-  showTotal();
-  if (totalScores[activePlayer] >= 20) {
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add('player--winner');
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.remove('player--active');
-  } else {
-    switchPlayer();
+  if (playing) {
+    totalScores[activePlayer] += currentScore;
+    showTotal();
+    if (totalScores[activePlayer] >= 20) {
+      playing = false;
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    } else {
+      switchPlayer();
+    }
   }
 });
 
 newGameBtn.addEventListener('click', function () {
+  playing = true;
   currentScore = 0;
+  currentScore0El.textContent = 0;
+  currentScore1El.textContent = 0;
   totalScores[0] = 0;
   totalScores[1] = 0;
-  document.querySelector('#score--0').textContent = 0;
-  document.querySelector('#score--1').textContent = 0;
-  document.querySelector('.player--0').classList.add('player--active');
-  document.querySelector('.player--1').classList.remove('player--active');
+  totalScore0El.textContent = 0;
+  totalScore1El.textContent = 0;
+  player0El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active', 'player--winner');
 });
