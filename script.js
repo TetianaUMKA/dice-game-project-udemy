@@ -18,17 +18,28 @@ totalScore0El.textContent = 0;
 totalScore1El.textContent = 0;
 diceEl.classList.add('hidden');
 
+let currentScore = 0;
+let totalScore = 0;
+
 rollBtn.addEventListener('click', function () {
   const dice = Math.trunc(Math.random() * 6) + 1;
   diceEl.classList.remove('hidden');
   diceEl.src = `dice-${dice}.png`;
-  let totalScore = 0;
-  let currentScore = 0;
+
   if (dice !== 1) {
-    currentScore0El.textContent = dice;
-    currentScore = currentScore + dice;
-    currentScore0El = currentScore;
+    currentScore += dice;
+    currentScore0El.textContent = currentScore;
   } else {
-    currentScore0El.textContent = 0;
+    currentScore = 0;
+    currentScore0El.textContent = currentScore;
+    totalScore = 0;
+    totalScore0El.textContent = totalScore;
   }
+});
+
+holdBtn.addEventListener('click', function () {
+  totalScore += currentScore;
+  totalScore0El.textContent = totalScore;
+  currentScore = 0;
+  currentScore0El.textContent = currentScore;
 });
