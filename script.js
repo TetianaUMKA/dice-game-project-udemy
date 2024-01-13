@@ -72,7 +72,7 @@ holdBtn.addEventListener('click', function () {
   if (playing) {
     totalScores[activePlayer] += currentScore;
     showTotal();
-    if (totalScores[activePlayer] >= 20) {
+    if (totalScores[activePlayer] >= 100) {
       playing = false;
       diceEl.classList.add('hidden');
       document
