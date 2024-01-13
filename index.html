@@ -30,21 +30,39 @@
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
-      <div class="start-modal">
+      <div class="modal start-modal">
         <input
+          class="player-name"
           type="text"
           placeholder="Enter the name of the player 1"
           id="name-player1"
         />
         <input
+          class="player-name"
           type="text"
           placeholder="Enter the name of the player 2"
           id="name-player2"
         />
-        <button class="btn start-btn">🎲 START GAME</button>
+        <button class="btn start-btn">🎲 START THE GAME</button>
+      </div>
+      <div class="modal rules-modal hidden">
+        <div>
+          <h2 class="rules-title">🎲 GAME RULES:</h2>
+          <p class="rules-text">
+            The user rolls the dice if the dice shows number greater then 1 we
+            can rolls one more time till we don't click the hold button. When we
+            click the hold button the current score added to the total score.
+            But if the dice shows 1 the current score become 0 and the player
+            changes. The game continue till the total score will become 100. Who
+            has the first get 100 will be the winner.
+          </p>
+        </div>
+        <button class="close-rules-btn">&times</button>
       </div>
     </main>
+    <button class="open-rules-btn">GAME RULES</button>
     <script src="start-modal.js"></script>
     <script src="script.js"></script>
+    <script src="rules-modal.js"></script>
   </body>
 </html>
