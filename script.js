@@ -16,7 +16,7 @@ diceEl.classList.add('hidden');
 totalScore0El.textContent = 0;
 totalScore1El.textContent = 0;
 
-const totalScores = [0, 0];
+let totalScores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
@@ -79,11 +79,11 @@ holdBtn.addEventListener('click', function () {
 
 newGameBtn.addEventListener('click', function () {
   playing = true;
+  activePlayer = 0;
   currentScore = 0;
+  totalScores = [0, 0];
   currentScore0El.textContent = 0;
   currentScore1El.textContent = 0;
-  totalScores[0] = 0;
-  totalScores[1] = 0;
   totalScore0El.textContent = 0;
   totalScore1El.textContent = 0;
   player0El.classList.remove('player--winner');
