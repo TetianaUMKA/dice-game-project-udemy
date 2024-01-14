@@ -53,6 +53,13 @@ const switchPlayer = function () {
   activePlayer = activePlayer === 0 ? 1 : 0;
 };
 
+rollBtn.addEventListener('mouseover', function () {
+  rollBtn.textContent = '🎲';
+});
+rollBtn.addEventListener('mouseout', function () {
+  rollBtn.textContent = '🎲 Roll dice';
+});
+
 rollBtn.addEventListener('click', function () {
   if (playing) {
     const dice = Math.trunc(Math.random() * 6) + 1;
