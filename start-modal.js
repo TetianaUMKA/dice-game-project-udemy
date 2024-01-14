@@ -15,3 +15,13 @@ startBtn.addEventListener('click', function () {
     playerName2.textContent = enteredName2.value;
   }
 });
+
+startBtn.addEventListener('mouseover', function () {
+  if (enteredName1.value && enteredName2.value) {
+    startBtn.textContent = `🎲 Let's play ${enteredName1.value} & ${enteredName2.value}!!!`;
+  }
+});
+
+startBtn.addEventListener('mouseout', function () {
+  startBtn.textContent = '🎲 START THE GAME';
+});
