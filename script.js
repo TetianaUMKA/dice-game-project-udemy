@@ -11,6 +11,7 @@ const diceEl = document.querySelector('.dice');
 const newGameBtn = document.querySelector('.btn--new');
 const rollBtn = document.querySelector('.btn--roll');
 const holdBtn = document.querySelector('.btn--hold');
+const changePlayersBtn = document.querySelector('.change-players-btn');
 
 let playing, activePlayer, currentScore, totalScores;
 
@@ -95,3 +96,9 @@ holdBtn.addEventListener('click', function () {
 });
 
 newGameBtn.addEventListener('click', init);
+
+changePlayersBtn.addEventListener('click', function () {
+  setTimeout(function () {
+    location.reload();
+  }, 400);
+});
